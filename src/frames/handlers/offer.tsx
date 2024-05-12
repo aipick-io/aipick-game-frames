@@ -71,7 +71,6 @@ export const createOfferAuthorizedFrameHandler = (
           intents: [
             <Button action={`/${offer.day}`}>Go Back</Button>,
             <Button.Redirect location={process.env.APPLICATION_ORIGIN || ''}>Go to App</Button.Redirect>,
-            <Button.Redirect location={process.env.FARCASTER_ACCOUNT_URL || ''}>Follow</Button.Redirect>,
           ],
         });
       }
