@@ -107,7 +107,7 @@ export const createOfferFramesApi = () => {
           intents: [
             // TODO: add links to app and farcaster channel
             <Button.Redirect location={process.env.APPLICATION_ORIGIN || ''}>Go to App</Button.Redirect>,
-            <Button action={'/'}>Follow</Button>,
+            <Button location={process.env.FARCASTER_ACCOUNT_URL || ''}>Follow</Button>,
           ],
         });
       }
