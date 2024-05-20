@@ -82,6 +82,8 @@ export const createOfferFramesApi = () => {
           selectedTokens: tokens,
         });
 
+        console.log(process.env.FARCASTER_ACCOUNT_URL)
+
         return context.res({
           image: (
             <Layout>
@@ -105,9 +107,8 @@ export const createOfferFramesApi = () => {
             </Layout>
           ),
           intents: [
-            // TODO: add links to app and farcaster channel
-            <Button.Redirect location={process.env.APPLICATION_ORIGIN || ''}>Go to App</Button.Redirect>,
-            <Button.Redirect location={process.env.FARCASTER_ACCOUNT_URL || ''}>Follow</Button.Redirect>,
+            <Button.Link href={process.env.APPLICATION_ORIGIN || ''}>Go to App</Button.Link>,
+            <Button.Link href={process.env.FARCASTER_ACCOUNT_URL || ''}>Follow</Button.Link>,
           ],
         });
       }

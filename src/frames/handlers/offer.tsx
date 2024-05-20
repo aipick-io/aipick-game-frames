@@ -34,7 +34,7 @@ export const createOfferUnauthorizedFrameHandler = <FrameContextType extends Fra
           </Layout>
         ),
         intents: [
-          <Button.Redirect location={process.env.APPLICATION_ORIGIN || ''}>Go to App</Button.Redirect>,
+          <Button.Link href={process.env.APPLICATION_ORIGIN || ''}>Go to App</Button.Link>,
         ],
       });
     }
@@ -70,7 +70,7 @@ export const createOfferAuthorizedFrameHandler = (
           ),
           intents: [
             <Button action={`/${offer.day}`}>Go Back</Button>,
-            <Button.Redirect location={process.env.APPLICATION_ORIGIN || ''}>Go to App</Button.Redirect>,
+            <Button.Link href={process.env.APPLICATION_ORIGIN || ''}>Go to App</Button.Link>,
           ],
         });
       }
