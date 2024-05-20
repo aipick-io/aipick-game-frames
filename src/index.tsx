@@ -61,6 +61,10 @@ const initializeFrames = async () => {
 
   app.route('/offers', createOfferFramesApi());
 
+  app.get('/health', (context) => {
+    return context.body('OK', 200);
+  });
+
   const port = process.env.PORT || 3000;
 
   if (process.env.NODE_ENV === 'development') {
