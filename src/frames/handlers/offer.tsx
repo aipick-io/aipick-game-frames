@@ -3,7 +3,12 @@ import { portfolioApi, PortfolioOffer, portfolioOfferApi } from '../../api';
 import { getCurrentDay } from '../../utils';
 import { LayeredCard, Layout } from '../../components';
 import { Text } from '../../system';
-import {createDefaultFrameHandler, createUserScopeFrameHandler, UserScopeFrameHandlerContext} from './default';
+import {
+  createDefaultFrameHandler,
+  createUserScopeFrameHandler,
+  UserScopeFrameHandlerContext,
+} from './default';
+import { generateShareOfferLink } from '../../utils/farcaster';
 
 interface OfferUnauthorizedFrameHandlerContext extends FrameContext {
   offer: PortfolioOffer;
@@ -33,9 +38,7 @@ export const createOfferUnauthorizedFrameHandler = <FrameContextType extends Fra
             </LayeredCard>
           </Layout>
         ),
-        intents: [
-          <Button.Link href={process.env.APPLICATION_ORIGIN || ''}>Go to App</Button.Link>,
-        ],
+        intents: [<Button.Link href={process.env.APPLICATION_ORIGIN || ''}>Go to App</Button.Link>],
       });
     }
 
@@ -71,6 +74,7 @@ export const createOfferAuthorizedFrameHandler = (
           intents: [
             <Button action={`/${offer.day}`}>Go Back</Button>,
             <Button.Link href={process.env.APPLICATION_ORIGIN || ''}>Go to App</Button.Link>,
+            <Button.Link href={generateShareOfferLink(offer.day)}>Share</Button.Link>,
           ],
         });
       }

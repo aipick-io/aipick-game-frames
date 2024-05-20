@@ -5,6 +5,7 @@ import { Text } from '../../system';
 import { portfolioApi } from '../../api';
 import { createOfferUnauthorizedFrameHandler, createOfferAuthorizedFrameHandler } from '../handlers';
 import { encodeData, decodeDate } from '../../utils/encoding';
+import { generateShareOfferLink } from '../../utils/farcaster';
 
 export const createOfferFramesApi = () => {
   const router = new Frog();
@@ -82,8 +83,6 @@ export const createOfferFramesApi = () => {
           selectedTokens: tokens,
         });
 
-        console.log(process.env.FARCASTER_ACCOUNT_URL)
-
         return context.res({
           image: (
             <Layout>
@@ -109,6 +108,7 @@ export const createOfferFramesApi = () => {
           intents: [
             <Button.Link href={process.env.APPLICATION_ORIGIN || ''}>Go to App</Button.Link>,
             <Button.Link href={process.env.FARCASTER_ACCOUNT_URL || ''}>Follow</Button.Link>,
+            <Button.Link href={generateShareOfferLink(offer.day)}>Share</Button.Link>,
           ],
         });
       }

@@ -50,7 +50,7 @@ const initializeFrames = async () => {
         ),
         intents: offerDay
           ? [
-              <Button action={`/offers/${offerDay}`} value={'W10'}>
+              <Button action={`/offers/${offerDay}`}>
                 Start
               </Button>,
             ]
