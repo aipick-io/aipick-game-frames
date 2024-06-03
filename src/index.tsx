@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 import advancedFormatPlugin from 'dayjs/plugin/advancedFormat';
 import utcPlugin from 'dayjs/plugin/utc';
 import { vars, Text } from './system';
-import { createOfferFramesApi } from './frames/api';
+import { createBattleFramesApi, createOfferFramesApi } from './frames/api';
 import { LayeredCard, Layout } from './components';
 import logger from './logger';
 
@@ -60,6 +60,8 @@ const initializeFrames = async () => {
   }
 
   app.route('/offers', createOfferFramesApi());
+
+  app.route('/battles', createBattleFramesApi());
 
   app.get('/health', (context) => {
     return context.body('OK', 200);
